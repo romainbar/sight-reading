@@ -6,7 +6,8 @@ Those are *zero footprint* applications using:
 * the [VexTab](http://www.vexflow.com/vextab/) and [VexFlow](http://www.vexflow.com/) libraries to display sheet music.
 
 # Proof of concept
-Demo [available here](https://romainbar.github.io/proofofconcept/)
+Demo [available here](https://romainbar.github.io/proofofconcept/).
+
 Screenshot below:
 ![Screenshot]
 (https://raw.githubusercontent.com/romainbar/sight-reading/master/images/SightReading_ProofOfConcept.png)
