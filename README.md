@@ -6,7 +6,8 @@ Those are *zero footprint* applications using:
 * the [VexTab](http://www.vexflow.com/vextab/) and [VexFlow](http://www.vexflow.com/) libraries to display sheet music.
 
 # Proof of concept
-[Screenshot](https://raw.githubusercontent.com/romainbar/sight-reading/master/images/SightReading_ProofOfConcept.png)
+![Screenshot]
+(https://raw.githubusercontent.com/romainbar/sight-reading/master/images/SightReading_ProofOfConcept.png)
 
 # License
 MIT license. **VexFlow** is also released under the MIT license. Please note that the **VexTab** parser is freely available for non-commercial use.
