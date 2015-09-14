@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Note Reading</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/vextab-div.js"></script>
+    <script src="../libs/midiHandler.js"></script>
+    <script src="../libs/midiDisplay.js"></script>
+    <script src="midiApp.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+<body ng-app="midiModule" ng-controller="mainController">
+
+<h1>Hit the key corresponding to the displayed note</h1>
+
+<center>
+    <div ng-class="resultClass">{{result}}</div><br/>
+    <canvas id="noteShow"></canvas>
+</center>
+
+</body>
+</html>
