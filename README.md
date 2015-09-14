@@ -5,6 +5,9 @@ Those are *zero footprint* applications using:
 * the [Web MIDI API](http://www.w3.org/TR/webmidi/), currently available in [Google Chrome browsers](https://www.google.com/chrome/browser/desktop/) to access MIDI controllers,
 * the [VexTab](http://www.vexflow.com/vextab/) and [VexFlow](http://www.vexflow.com/) libraries to display sheet music.
 
+# One note reading
+Demo [available here](https://romainbar.github.io/onenotereading/).
+
 # Proof of concept
 Demo [available here](https://romainbar.github.io/proofofconcept/).
 
