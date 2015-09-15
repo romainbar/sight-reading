@@ -4,7 +4,8 @@ var midiApp = angular.module ('midiModule', []);
 var mainController = ['$scope', function ($scope)
 {
     var midiControl;
-    var midiShow;
+    var midiShowTreble;
+    var midiShowBass;
     var displayedNote;
 
 
@@ -20,7 +21,13 @@ var mainController = ['$scope', function ($scope)
     function displayNewNote ()
     {
         displayedNote = getRandomMidiNote ();
-        midiShow.displayPianoNote (displayedNote);
+        if (displayedNote >= 60) {
+            midiShowTreble.displayStaffNotes ([displayedNote], 'treble');
+            midiShowBass.displayStaffNotes (false, 'bass');
+        } else {
+            midiShowTreble.displayStaffNotes (false, 'treble');
+            midiShowBass.displayStaffNotes ([displayedNote], 'bass');
+        }
     };
 
 
@@ -44,8 +51,13 @@ var mainController = ['$scope', function ($scope)
 
     function init ()
     {
+        // both staves active by default
+        $scope.trebleActive = true;
+        $scope.bassActive = true;
+
         // canvas ID = 'noteShow', width = 400, scale = 1.5
-        midiShow = new midiDisplay ('noteShow', 400, 1.5);
+        midiShowTreble = new midiDisplay ('trebleCanvas', 400, 1.5);
+        midiShowBass = new midiDisplay ('bassCanvas', 400, 1.5);
 
         // display first random note
         displayNewNote ();

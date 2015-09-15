@@ -13,8 +13,29 @@
 <h1>Hit the key corresponding to the displayed note</h1>
 
 <center>
-    <div ng-class="resultClass">{{result}}</div><br/>
-    <canvas id="noteShow"></canvas>
+  <table border="0">
+    <tr>
+      <td>
+        <div ng-class="resultClass">{{result}}</div><br/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <canvas id="trebleCanvas"></canvas>
+      </td>
+      <td>
+        <input type="checkbox" ng-model="trebleActive" ng-init="checked=true">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <canvas id="bassCanvas"></canvas>
+      </td>
+      <td>
+        <input type="checkbox" ng-model="bassActive" ng-init="checked=true">
+      </td>
+    </tr>
+  </table>
 </center>
 
 </body>
