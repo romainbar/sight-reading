@@ -43,17 +43,21 @@ function midiDisplay (displayCanvasId, width, scale)
     function staffVexTab (notes, key)
     {
         var text = '';
-        text += 'options space=55\n'; // put enough space for the highest note
         switch (key) {
             case 'treble':
+                text += 'options space=55\n'; // put enough space for the highest note
                 text += 'tabstave notation=true tablature=false\n'; // treble key (default)
                 break;
             case 'bass':
                 text += 'tabstave notation=true tablature=false clef=bass\n'; // bass key
                 break;
         }
+
         text += 'notes ' + notes + '\n';
-        text += 'options space=50\n'; // put enough space for the lowest note
+
+        if (key === 'bass') {
+            text += 'options space=50\n'; // put enough space for the lowest note
+        }
 
         return text;
     };

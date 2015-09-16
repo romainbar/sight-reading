@@ -24,7 +24,7 @@
         <canvas id="trebleCanvas"></canvas>
       </td>
       <td>
-        <input type="checkbox" ng-model="trebleActive" ng-init="checked=true">
+        <input type="checkbox" ng-model="trebleActive" ng-change="configurationChange()" ng-checked="true">
       </td>
     </tr>
     <tr>
@@ -32,7 +32,7 @@
         <canvas id="bassCanvas"></canvas>
       </td>
       <td>
-        <input type="checkbox" ng-model="bassActive" ng-init="checked=true">
+        <input type="checkbox" ng-model="bassActive" ng-change="configurationChange()" ng-checked="true">
       </td>
     </tr>
   </table>

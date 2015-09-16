@@ -12,6 +12,16 @@ var mainController = ['$scope', function ($scope)
     function getRandomMidiNote ()
     {
         var min = 21, max = 108;
+
+        if (!$scope.bassActive) {
+            // exclude bass
+            min = 60;
+        }
+        if (!$scope.trebleActive) {
+            // exclude treble
+            max = 59;
+        }
+
         var randomIntInclusive = Math.floor (Math.random() * (max -min + 1)) + min;
 
         return randomIntInclusive;
@@ -49,12 +59,15 @@ var mainController = ['$scope', function ($scope)
     };
 
 
+    $scope.configurationChange = function ()
+    {
+        // resfresh note
+        displayNewNote ();
+    }
+
+
     function init ()
     {
-        // both staves active by default
-        $scope.trebleActive = true;
-        $scope.bassActive = true;
-
         // canvas ID = 'noteShow', width = 400, scale = 1.5
         midiShowTreble = new midiDisplay ('trebleCanvas', 400, 1.5);
         midiShowBass = new midiDisplay ('bassCanvas', 400, 1.5);
