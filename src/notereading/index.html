@@ -24,7 +24,12 @@
         <canvas id="trebleCanvas"></canvas>
       </td>
       <td>
-        <input type="checkbox" ng-model="trebleActive" ng-change="configurationChange()" ng-checked="true">
+        <input type="checkbox" ng-model="trebleActive" ng-change="configurationChange()">Active<br/>
+        <input type="checkbox" ng-model="trebleC8" ng-change="configurationChange()">C8<br/>
+        <input type="checkbox" ng-model="trebleC7" ng-change="configurationChange()">C7<br/>
+        <input type="checkbox" ng-model="trebleC6" ng-change="configurationChange()">C6<br/>
+        <input type="checkbox" ng-model="trebleC5" ng-change="configurationChange()">C5<br/>
+        <input type="checkbox" ng-model="trebleC4" ng-change="configurationChange()">C4<br/>
       </td>
     </tr>
     <tr>
@@ -32,7 +37,11 @@
         <canvas id="bassCanvas"></canvas>
       </td>
       <td>
-        <input type="checkbox" ng-model="bassActive" ng-change="configurationChange()" ng-checked="true">
+        <input type="checkbox" ng-model="bassActive" ng-change="configurationChange()">Active<br/>
+        <input type="checkbox" ng-model="bassC3" ng-change="configurationChange()">C3<br/>
+        <input type="checkbox" ng-model="bassC2" ng-change="configurationChange()">C2<br/>
+        <input type="checkbox" ng-model="bassC1" ng-change="configurationChange()">C1<br/>
+        <input type="checkbox" ng-model="bassC0" ng-change="configurationChange()">C0<br/>
       </td>
     </tr>
   </table>
