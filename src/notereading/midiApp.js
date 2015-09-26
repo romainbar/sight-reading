@@ -32,45 +32,82 @@ var mainController = ['$scope', function ($scope)
 
     function getRandomMidiNote()
     {
-        // make the list of active ranges
-        var ranges = [];
+        // make the list of active notes
+        var notes = [];
+
+        var acc = $scope.accidentals;
 
         if ($scope.bassActive) {
-            // A0 to B0
-            if ($scope.bassC0) ranges.push ( [21, 23] );
-            // C1 to B1
-            if ($scope.bassC1) ranges.push ( [24, 35] );
-            // C2 to B2
-            if ($scope.bassC2) ranges.push ( [36, 47] );
-            // C3 to B3
-            if ($scope.bassC3) ranges.push ( [48, 59] );
+            // octave 0
+            if ($scope.bassC0) {
+                notes = notes.concat ( [21, 23] ); // [A0, A0#]
+                if (acc) notes = notes.concat ( [22] ); // [B0]
+            }
+
+            // octave 1: C1 to B1
+            if ($scope.bassC1) {
+                notes = notes.concat ( [24, 26, 28, 29, 31, 33, 35] );
+                if (acc) notes = notes.concat ( [25, 27, 30, 32, 34] );
+            }
+
+            // octave 2: C2 to B2
+            if ($scope.bassC2) {
+                notes = notes.concat ( [36, 38, 40, 41, 43, 45, 47] );
+                if (acc) notes = notes.concat ( [37, 39, 42, 44, 46] );
+            }
+
+            // octave 3: C3 to B3
+            if ($scope.bassC3) {
+                notes = notes.concat ( [48, 50, 52, 53, 55, 57, 59] );
+                if (acc) notes = notes.concat ( [49, 51, 54, 56, 58] );
+            }
         }
 
         if ($scope.trebleActive) {
-            // C4 to B4
-            if ($scope.trebleC4) ranges.push ( [60, 71] );
-            // C5 to B5
-            if ($scope.trebleC5) ranges.push ( [72, 83] );
-            // C6 to B6
-            if ($scope.trebleC6) ranges.push ( [84, 95] );
-            // C7 to B7
-            if ($scope.trebleC7) ranges.push ( [96, 107] );
-            // C8
-            if ($scope.trebleC8) ranges.push ( [108, 108] );
+            // octave 4: C4 to B4
+            if ($scope.trebleC4) {
+                notes = notes.concat ( [60, 62, 64, 65, 67, 69, 71] );
+                if (acc) notes = notes.concat ( [61, 63, 66, 68, 70] );
+            }
+
+            // octave 5: C5 to B5
+            if ($scope.trebleC5) {
+                notes = notes.concat ( [72, 74, 76, 77, 79, 81, 83] );
+                if (acc) notes = notes.concat ( [73, 75, 78, 80, 82] );
+            }
+
+            // octave 6: C6 to B6
+            if ($scope.trebleC6) {
+                notes = notes.concat ( [84, 86, 88, 89, 91, 93, 95] );
+                if (acc) notes = notes.concat ( [85, 87, 90, 92, 94] );
+            }
+
+            // octave 7: C7 to B7
+            if ($scope.trebleC7) {
+                notes = notes.concat ( [96, 98, 100, 101, 103, 105, 107] );
+                if (acc) notes = notes.concat ( [97, 99, 102, 104, 106] );
+            }
+
+            // octave 8: C8
+            if ($scope.trebleC8) {
+                notes = notes.concat ( [108] );
+            }
         }
 
-        if (ranges.length === 0) {
-            // no octave selected
+        var len = notes.length;
+        if (len === 0) {
+            // no note selected
             return false;
         }
 
-        // randomly select an active range
-        var n = Math.floor (Math.random() * ranges.length);
-        var selectedRange = ranges[n];
+        // randomly pick new note, different from displayed one
+        var n = Math.floor (Math.random() * len);
+        var randomIntInclusive = notes[n];
 
-        // randomly pick note within range
-        var min = selectedRange[0], max = selectedRange[1];
-        var randomIntInclusive = Math.floor (Math.random() * (max - min + 1)) + min;
+        while (len > 1 && randomIntInclusive === displayedNote) {
+            n = Math.floor (Math.random() * len);
+            randomIntInclusive = notes[n];
+        }
 
         return randomIntInclusive;
     };
@@ -116,6 +153,7 @@ var mainController = ['$scope', function ($scope)
         var conf = {
             trebleActive: $scope.trebleActive,
             bassActive: $scope.bassActive,
+            accidentals: $scope.accidentals,
 
             trebleC4: $scope.trebleC4,
             trebleC5: $scope.trebleC5,
@@ -141,6 +179,7 @@ var mainController = ['$scope', function ($scope)
             // set retrieved values
             $scope.trebleActive = conf.trebleActive;
             $scope.bassActive = conf.bassActive;
+            $scope.accidentals = conf.accidentals,
 
             $scope.trebleC4 = conf.trebleC4;
             $scope.trebleC5 = conf.trebleC5;
@@ -155,6 +194,7 @@ var mainController = ['$scope', function ($scope)
             // both staves active by default
             $scope.trebleActive = true;
             $scope.bassActive = true;
+            $scope.accidentals = true;
 
             // all octaves active by default
             $scope.trebleC4 = true;
